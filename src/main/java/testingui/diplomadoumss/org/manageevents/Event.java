@@ -19,4 +19,8 @@ public class Event {
         element.clear();
         element.sendKeys(value);
     }
+
+    public static void isWebElementVisible(WebElement element){
+        DriverManager.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(element));
+    }
 }
