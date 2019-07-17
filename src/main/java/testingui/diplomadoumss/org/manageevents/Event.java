@@ -10,17 +10,21 @@ import testingui.diplomadoumss.org.core.DriverManager;
  */
 public class Event {
     public static void clickWebElement(WebElement element){
-        DriverManager.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(element));
+        isWebElementClickable(element);
         element.click();
     }
 
     public static void fillWebElement(WebElement element, String value){
-        DriverManager.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(element));
+        isWebElementVisible(element);
         element.clear();
         element.sendKeys(value);
     }
 
     public static void isWebElementVisible(WebElement element){
         DriverManager.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public static void isWebElementClickable(WebElement element){
+        DriverManager.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(element));
     }
 }
