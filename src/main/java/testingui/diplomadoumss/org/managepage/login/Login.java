@@ -1,11 +1,9 @@
 package testingui.diplomadoumss.org.managepage.login;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import testingui.diplomadoumss.org.managepage.BasePage;
-import testingui.diplomadoumss.org.utilsfiles.CommonEvents;
-import testingui.diplomadoumss.org.utilsfiles.PropertyAccesor;
+import testingui.diplomadoumss.org.managepage.dashboard.Dashboard;
 
 /**
  * @author Marcelo Garay
@@ -27,11 +25,8 @@ public class Login extends BasePage {
         emailTextField.sendKeys(email);
     }
 
-    public void setCredentials(){
-        String username = PropertyAccesor.getInstance().getUser();
-        String password = PropertyAccesor.getInstance().getPassword();
-        CommonEvents.setInputField(emailTextField, username);
-        CommonEvents.setInputField(passwordInputField, password);
-        CommonEvents.clickButton(loginButton);
+    public Dashboard setCredentials() {
+
+        return new Dashboard();
     }
 }
