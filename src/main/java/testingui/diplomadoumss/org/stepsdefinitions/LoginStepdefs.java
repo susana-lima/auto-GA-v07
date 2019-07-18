@@ -24,4 +24,9 @@ public class LoginStepdefs {
     public void setMyCredencialsOnLoginPage() throws Throwable {
         dashboard = login.setCredentials();
     }
+
+    @And("^click 'Cars' link on 'Left Panel' page$")
+    public void clickCarsLinkOnLeftPanelPage() throws Throwable {
+        dashboard.clickCarsExpand();
+    }
 }

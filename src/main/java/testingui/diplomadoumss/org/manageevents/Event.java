@@ -27,4 +27,12 @@ public class Event {
     public static void isWebElementClickable(WebElement element){
         DriverManager.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(element));
     }
+
+    public static void avoidToUse(int seconds){
+        try{
+            Thread.sleep(seconds * 1000);
+        }catch (Exception e){
+            System.out.println(e.fillInStackTrace());
+        }
+    }
 }

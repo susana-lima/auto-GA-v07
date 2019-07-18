@@ -15,7 +15,16 @@ public class Dashboard extends BasePage {
     @FindBy(xpath = "//ul[@id='social-sidebar-menu']//a[contains(text(), 'Bookings')]")
     private WebElement bookingLink;
 
+    @FindBy(xpath = "//ul[@id='social-sidebar-menu']//a[contains(., 'Cars') and @aria-expanded='false']")
+    private WebElement carsExpand;
+
     public Dashboard() {
-        isWebElementVisible(bookingLink);
+//        isWebElementVisible(bookingLink);
+        avoidToUse(3);
+    }
+
+    public Dashboard clickCarsExpand() {
+        clickWebElement(carsExpand);
+        return this;
     }
 }

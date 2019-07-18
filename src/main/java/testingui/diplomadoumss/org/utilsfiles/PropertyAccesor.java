@@ -48,4 +48,8 @@ public class PropertyAccesor {
     public static void main(String[] args) {
         System.out.println(PropertyAccesor.getInstance().getURL());
     }
+
+    public String getEmail(){
+        return prop.getProperty("username");
+    }
 }
