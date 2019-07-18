@@ -1,7 +1,6 @@
 package testingui.diplomadoumss.org.core;
 
 import org.openqa.selenium.WebDriver;
-import testingui.diplomadoumss.org.utilsfiles.LoadPage;
 import testingui.diplomadoumss.org.utilsfiles.PropertyAccesor;
 
 import java.util.HashMap;

@@ -1,11 +1,12 @@
 package testingui.diplomadoumss.org.managepage.login;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import testingui.diplomadoumss.org.managepage.BasePage;
-import testingui.diplomadoumss.org.utilsfiles.CommonEvents;
+import testingui.diplomadoumss.org.managepage.dashboard.Dashboard;
 import testingui.diplomadoumss.org.utilsfiles.PropertyAccesor;
+
+import static testingui.diplomadoumss.org.manageevents.Event.*;
 
 /**
  * @author Marcelo Garay
@@ -13,25 +14,38 @@ import testingui.diplomadoumss.org.utilsfiles.PropertyAccesor;
  */
 public class Login extends BasePage {
 
-    @FindBy(xpath = "//input[@name='email' and @type='email']")
+    @FindBy(xpath = "//input[@name='email' and @type='text']")
     private WebElement emailTextField;
 
     @FindBy(xpath = "//input[@name='password' and @type='password']")
-    private WebElement passwordInputField;
+    private WebElement passwordTextField;
 
-    @FindBy(css = ".btn-primary.btn-block")
+    @FindBy(xpath = "//button[@type='submit']")
     private WebElement loginButton;
 
-
-    public void setEmail(String email){
-        emailTextField.sendKeys(email);
+    public Login() {
+//        isWebElementVisible(loginButton);
+        avoidToUse(2);
     }
 
-    public void setCredentials(){
-        String username = PropertyAccesor.getInstance().getUser();
-        String password = PropertyAccesor.getInstance().getPassword();
-        CommonEvents.setInputField(emailTextField, username);
-        CommonEvents.setInputField(passwordInputField, password);
-        CommonEvents.clickButton(loginButton);
+    public Login setEmail(String email) {
+        fillWebElement(emailTextField, email);
+        return this;
+    }
+
+    public Login setPassword(String password) {
+        fillWebElement(passwordTextField, password);
+        return this;
+    }
+
+    public Dashboard clickLoginButton() {
+        clickWebElement(loginButton);
+        return new Dashboard();
+    }
+
+    public Dashboard setCredentials() {
+        return setEmail(PropertyAccesor.getInstance().getEmail()).
+                setPassword(PropertyAccesor.getInstance().getPassword()).
+                clickLoginButton();
     }
 }
