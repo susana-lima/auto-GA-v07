@@ -19,6 +19,9 @@ public class Dashboard extends BasePage {
     @FindBy(xpath = "//ul[@id='social-sidebar-menu']//a[contains(., 'Cars') and @aria-expanded='false']")
     private WebElement carsExpand;
 
+    @FindBy(xpath = "//ul[@id='social-sidebar-menu']//a[contains(., 'Cars') and @aria-expanded='false']")
+    private WebElement flightsExpand;
+
     public Dashboard() {
 //        isWebElementVisible(bookingLink);
         avoidToUse(3);
@@ -26,6 +29,10 @@ public class Dashboard extends BasePage {
 
     public Dashboard clickCarsExpand() {
         clickWebElement(carsExpand);
+        return this;
+    }
+    public Dashboard clickFlightsExpand() {
+        clickWebElement(flightsExpand);
         return this;
     }
 }

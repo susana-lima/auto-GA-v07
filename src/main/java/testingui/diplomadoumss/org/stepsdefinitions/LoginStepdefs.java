@@ -25,8 +25,8 @@ public class LoginStepdefs {
 
     }
 
-    @And("^click 'Cars' link on 'Left Panel' page$")
+  /*  @And("^click 'cars' link on 'Left Panel' page$")
     public void clickCarsLinkOnLeftPanelPage() throws Throwable {
         dashboard.clickCarsExpand();
-    }
+    }*/
 }
