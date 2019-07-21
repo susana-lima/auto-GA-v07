@@ -2,6 +2,7 @@ package testingui.diplomadoumss.org.manageevents;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import testingui.diplomadoumss.org.core.DriverManager;
 
 /**
@@ -34,5 +35,9 @@ public class Event {
         }catch (Exception e){
             System.out.println(e.fillInStackTrace());
         }
+    }
+    public static void selectWebElement(WebElement element, String value){
+        Select sel = new Select(element);
+        sel.selectByVisibleText(value);
     }
 }
