@@ -41,6 +41,6 @@ public class FlightStepsDef {
 
     @And("^click on 'Submit' bottom after select option$")
     public void clickOnSubmitBottomAfterSelectOption() throws Throwable {
-        flight.clickOnSubmitButtom();
+        flight.clickOnSubmitButton();
     }
 }

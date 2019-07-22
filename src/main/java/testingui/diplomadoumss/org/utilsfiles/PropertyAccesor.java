@@ -41,9 +41,22 @@ public class PropertyAccesor {
 
     public int getExplicitTimeWait(){return Integer.parseInt(prop.getProperty("explicitTimeWait"));}
 
-    public String getUser(){return prop.getProperty("username");}
+    public String getUser(){ return prop.getProperty("username");}
 
-    public String getPassword(){return prop.getProperty("password");}
+    public String getPassword(){ return prop.getProperty("password");}
+
+    public String getBusinessName(){
+        return prop.getProperty("businessName");
+    }
+    public String getSiteUrl(){
+        return prop.getProperty("siteUrl");
+    }
+    public String getLicenceKey(){
+        return prop.getProperty("licencekey");
+    }
+    public String copyrights(){
+        return prop.getProperty("copyrights");
+    }
 
     public static void main(String[] args) {
         System.out.println(PropertyAccesor.getInstance().getURL());

@@ -33,7 +33,7 @@ public class Flight extends BasePage {
         selectWebElement(selectDrodown, "Off");
     }
 
-    public void clickOnSubmitButtom() {
+    public void clickOnSubmitButton() {
         avoidToUse(2);
         clickWebElement(submitButtom);
         avoidToUse(2);
