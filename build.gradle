@@ -12,13 +12,19 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // testng
+    testCompile group: 'org.testng', name: 'testng', version: '6.14.3'
 
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
 
     // https://mvnrepository.com/artifact/info.cukes/cucumber-java
     compile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+
+    // cucumber-testng
+    testCompile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
+    testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: '1.2.5'
+    implementation 'org.testng:testng:6.9.6'
 
 }
 

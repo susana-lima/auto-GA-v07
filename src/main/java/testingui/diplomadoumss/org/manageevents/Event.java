@@ -35,4 +35,8 @@ public class Event {
             System.out.println(e.fillInStackTrace());
         }
     }
+
+    public static String getWebElementText(WebElement element) {
+        return element.getText();
+    }
 }
