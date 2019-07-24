@@ -4,6 +4,7 @@ package testingui.diplomadoumss.org;
 import cucumber.api.CucumberOptions;
 import cucumber.api.java.After;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
+import org.testng.annotations.AfterTest;
 import testingui.diplomadoumss.org.core.DriverManager;
 
 @CucumberOptions(
@@ -19,7 +20,7 @@ import testingui.diplomadoumss.org.core.DriverManager;
  */
 public class CucumberRunner extends AbstractTestNGCucumberTests{
 
-    @After
+    @AfterTest
     public void quitBrowser(){
         DriverManager.getInstance().getWebDriver().quit();
     }
