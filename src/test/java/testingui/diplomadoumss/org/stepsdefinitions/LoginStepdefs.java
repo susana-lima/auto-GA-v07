@@ -4,7 +4,9 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import org.openqa.selenium.json.Json;
 import org.testng.Assert;
+import testingui.diplomadoumss.org.managefile.ManageFile;
 import testingui.diplomadoumss.org.manageloadpage.LoadPage;
 import testingui.diplomadoumss.org.managepage.dashboard.Dashboard;
 import testingui.diplomadoumss.org.managepage.header.Header;
@@ -18,6 +20,7 @@ public class LoginStepdefs {
     private Login login;
     private Dashboard dashboard;
     private Header header = new Header();
+    private Json files = ManageFile.getInstance().getJsonFile("simplejson.json");
 
     @Given("^I load PHP travels$")
     public void iLoadPHPTravels() throws Throwable {
@@ -54,5 +57,10 @@ public class LoginStepdefs {
     @And("^click 'Logout' button on 'Header' page$")
     public void clickLogoutButtonOnHeaderPage() throws Throwable {
         header.logoutLink();
+    }
+
+    @And("^fill email field using json file on 'Login' page$")
+    public void fillEmailFieldUsingJsonFileOnLoginPage() throws Throwable {
+
     }
 }
