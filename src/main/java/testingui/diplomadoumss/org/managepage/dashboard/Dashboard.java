@@ -15,24 +15,24 @@ public class Dashboard extends BasePage {
     @FindBy(xpath = "//ul[@id='social-sidebar-menu']//a[contains(text(), 'Bookings')]")
     private WebElement bookingLink;
 
-    @FindBy(xpath = "//ul[@id='social-sidebar-menu']//a[contains(., 'Cars') and @aria-expanded='false']")
-    private WebElement carsExpand;
-
     @FindBy(xpath = "//ul[@id='social-sidebar-menu']//a[contains(., 'General') and @aria-expanded='false']")
     private WebElement generalExpand;
+
+    @FindBy(xpath = "//a[text()='Currencies']")
+    private WebElement currenciesOption;
 
     public Dashboard() {
 //        isWebElementVisible(bookingLink);
         avoidToUse(3);
     }
 
-    public Dashboard clickCarsExpand() {
-        clickWebElement(carsExpand);
+    public Dashboard clickGeneralExpand() {
+        clickWebElement(generalExpand);
         return this;
     }
 
-    public Dashboard clickGeneralExpand(){
-        clickWebElement(generalExpand);
+    public Dashboard clickCurrenciesOption(){
+        clickWebElement(currenciesOption);
         return this;
     }
 }

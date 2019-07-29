@@ -1,7 +1,6 @@
 package testingui.diplomadoumss.org.core;
 
 import org.openqa.selenium.WebDriver;
-import testingui.diplomadoumss.org.utilsfiles.LoadPage;
 import testingui.diplomadoumss.org.utilsfiles.PropertyAccesor;
 
 import java.util.HashMap;
@@ -12,7 +11,7 @@ public class FirstExample {
 
         WebDriver webDriver = DriverManager.getInstance().getWebDriver();
         webDriver.get(PropertyAccesor.getInstance().getURL());
-        //webDriver.quit();
+        webDriver.quit();
     }
 
     public static void exampleMap(){

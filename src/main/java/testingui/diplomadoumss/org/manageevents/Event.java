@@ -24,6 +24,10 @@ public class Event {
         DriverManager.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(element));
     }
 
+    public static boolean isAnElementVisible(WebElement element){
+       return element.isDisplayed();
+    }
+
     public static void isWebElementClickable(WebElement element){
         DriverManager.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(element));
     }
@@ -34,5 +38,9 @@ public class Event {
         }catch (Exception e){
             System.out.println(e.fillInStackTrace());
         }
+    }
+
+    public static String getWebElementText(WebElement element) {
+        return element.getText();
     }
 }

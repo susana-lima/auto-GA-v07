@@ -14,7 +14,6 @@ public class DriverManager {
     private static DriverManager ourInstance = new DriverManager();
     private WebDriver webDriver;
     private WebDriverWait webDriverWait;
-
     private static final int IMPLICIT_TIME_WAIT = PropertyAccesor.getInstance().getImplicitTimeWait();
     private static final int EXPLICIT_TIME_WAIT = PropertyAccesor.getInstance().getExplicitTimeWait();
 

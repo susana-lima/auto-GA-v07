@@ -1,5 +1,6 @@
 package testingui.diplomadoumss.org.managepage.login;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import testingui.diplomadoumss.org.managepage.BasePage;
@@ -22,6 +23,9 @@ public class Login extends BasePage {
 
     @FindBy(xpath="//button[@type='submit']")
     private WebElement loginButton;
+
+    @FindBy(xpath = "//a[text()='Currencies']")
+    private WebElement currenciesLiOption;
 
     public Login() {
 //        isWebElementVisible(loginButton);
@@ -47,5 +51,17 @@ public class Login extends BasePage {
         return setEmail(PropertyAccesor.getInstance().getEmail()).
                 setPassword(PropertyAccesor.getInstance().getPassword()).
                 clickLoginButton();
+    }
+
+    public String getLoginLabelButton() {
+        return getWebElementText(loginButton);
+    }
+
+    public String getCurrenciesLiOption(){
+        return getWebElementText(currenciesLiOption);
+    }
+
+    public Boolean isCurrenciesOptionVisible(){
+        return isAnElementVisible(currenciesLiOption);
     }
 }
