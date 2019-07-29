@@ -6,6 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
 import testingui.diplomadoumss.org.manageloadpage.LoadPage;
+import testingui.diplomadoumss.org.managepage.airports.Airports;
 import testingui.diplomadoumss.org.managepage.currencies.Currencies;
 import testingui.diplomadoumss.org.managepage.dashboard.Dashboard;
 import testingui.diplomadoumss.org.managepage.header.Header;
@@ -20,6 +21,7 @@ public class LoginStepdefs {
     private Dashboard dashboard;
     private Header header = new Header();
     private Currencies currencies = new Currencies();
+    private Airports airports = new Airports();
 
     @Given("^I load PHP travels$")
     public void iLoadPHPTravels() throws Throwable {
@@ -87,5 +89,26 @@ public class LoginStepdefs {
     @And("^set my currency data$")
     public void setMyCurrencyData() throws Throwable {
         currencies.fillDataNewCurrency();
+    }
+
+    @And("^click 'Flights' link on 'Left Panel' page$")
+    public void clickFlightsLinkOnLeftPanelPage() throws Throwable {
+        dashboard.clickFligthsExpand();
+    }
+
+    @Then("^verify that \"([^\"]*)\" option li is displayed on 'Left Panel' page$")
+    public void verifyThatOptionLiIsDisplayedOnLeftPanelPage(String arg0) throws Throwable {
+        Assert.assertEquals((airports.isFlightsOptionVisible()), Boolean.TRUE, "Airports option is verifying the allowed option");
+    }
+
+    @And("^click 'Airports' link belows 'Flights' options$")
+    public void clickAirportsLinkBelowsFlightsOptions() throws Throwable {
+        dashboard.clickAirportsOption();
+    }
+
+    @Then("^verify main airports are present in column Country$")
+    public void verifyMainAirportsArePresentInColumnCountry() throws Throwable {
+        Boolean arePresentAirports = airports.arePresentMainAirports();
+        Assert.assertEquals(arePresentAirports, Boolean.TRUE);
     }
 }

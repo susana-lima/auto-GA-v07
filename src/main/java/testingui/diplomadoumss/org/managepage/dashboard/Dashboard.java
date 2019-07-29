@@ -21,6 +21,12 @@ public class Dashboard extends BasePage {
     @FindBy(xpath = "//a[text()='Currencies']")
     private WebElement currenciesOption;
 
+    @FindBy(xpath = "//")
+    private WebElement fligthsExpand;
+
+    @FindBy(xpath = "//a[text()='Airports']")
+    private WebElement airportsOption;
+
     public Dashboard() {
 //        isWebElementVisible(bookingLink);
         avoidToUse(3);
@@ -33,6 +39,16 @@ public class Dashboard extends BasePage {
 
     public Dashboard clickCurrenciesOption(){
         clickWebElement(currenciesOption);
+        return this;
+    }
+
+    public Dashboard clickFligthsExpand(){
+        clickWebElement(fligthsExpand);
+        return this;
+    }
+
+    public Dashboard clickAirportsOption(){
+        clickWebElement(airportsOption);
         return this;
     }
 }
