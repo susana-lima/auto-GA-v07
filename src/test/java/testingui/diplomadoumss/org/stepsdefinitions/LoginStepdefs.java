@@ -11,6 +11,7 @@ import testingui.diplomadoumss.org.managepage.currencies.Currencies;
 import testingui.diplomadoumss.org.managepage.dashboard.Dashboard;
 import testingui.diplomadoumss.org.managepage.header.Header;
 import testingui.diplomadoumss.org.managepage.login.Login;
+import testingui.diplomadoumss.org.managepage.nasa.Nasa;
 
 /**
  * @author Marcelo Garay
@@ -22,6 +23,7 @@ public class LoginStepdefs {
     private Header header = new Header();
     private Currencies currencies = new Currencies();
     private Airports airports = new Airports();
+    private Nasa nasa;
 
     @Given("^I load PHP travels$")
     public void iLoadPHPTravels() throws Throwable {
@@ -110,5 +112,36 @@ public class LoginStepdefs {
     public void verifyMainAirportsArePresentInColumnCountry() throws Throwable {
         Boolean arePresentAirports = airports.arePresentMainAirports();
         Assert.assertEquals(arePresentAirports, Boolean.TRUE);
+    }
+
+    @Given("^I load NASA page$")
+    public void iLoadNASAPage() throws Throwable {
+        nasa = LoadPage.loadNasaPage();
+    }
+
+    @And("^Click NASA API Listing link$")
+    public void clickNASAAPIListingLink() throws Throwable {
+        nasa.clickNasaApiListingLink();
+    }
+
+    @And("^Click NASA API Listing second time$")
+    public void clickNASAAPIListingSecondTime() throws Throwable {
+        nasa.clickNasaApiListingLink();
+    }
+
+    @And("^Click Earth left panel$")
+    public void clickEarthLeftPanel() throws Throwable {
+        nasa.clickEarthLinkOption();
+    }
+
+    @And("^Click Imagery sub menu option$")
+    public void clickImagerySubMenuOption() throws Throwable {
+        nasa.clickImageryOption();
+    }
+
+    @Then("^Validate get information in the page$")
+    public void validateGetInformationInThePage() throws Throwable {
+        String getTextOnPage = nasa.getTextInformation();
+        Assert.assertEquals(getTextOnPage,"GET https://api.nasa.gov/planetary/earth/imagery", "GET text validating");
     }
 }
