@@ -1,4 +1,4 @@
-Feature: Validactiones de la pagina de Login
+Feature: Validactiones de la pagina de Nasa APIs
 
 #  Background: Load main page
 
@@ -9,11 +9,13 @@ Feature: Validactiones de la pagina de Login
 #    And click 'Cars' link on 'Left Panel' page
 #    And click 'Logout' button on 'Header' page
 
-  Scenario: Validar "Login" label en la pagina de LOGIN
-    Given I load PHP travels
-      And fill "test@test.com" email field on 'Login' page
-      And fill "test@test.com" password field on 'Login' page
-    Then verify the "LOGIN" label button is displayed on 'Login' page
+  Scenario: Comparar links response en la pagina de "Nasa APIs"
+    Given I load Nasa APIS Page
+      And click "NASA APIs Listing" link on left panel
+      And click "NASA APIs Listing" link once again
+      And click "Earth" link
+      And click on "Gallery" from sub menu
+      Then Compare with with the text from "GET https://api.nasa.gov/planetary/earth/imagery" if they are equals
 
 
 #  Scenario Outline: Validar "Login" label en la pagina de LOGIN multiples scenarios

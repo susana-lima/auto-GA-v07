@@ -1,6 +1,7 @@
 package testingui.diplomadoumss.org.managepage.dashboard;
 
 import static testingui.diplomadoumss.org.manageevents.Event.*;
+import static testingui.diplomadoumss.org.manageevents.Event.clickWebElement;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,19 +13,38 @@ import testingui.diplomadoumss.org.managepage.BasePage;
  */
 public class Dashboard extends BasePage {
 
-    @FindBy(xpath = "//ul[@id='social-sidebar-menu']//a[contains(text(), 'Bookings')]")
-    private WebElement bookingLink;
+    @FindBy(xpath = "//ul[@id='tocify-header1']//a[contains(text(), 'NASA API Listing')]")
+    private WebElement listingAPIExpand;
 
-    @FindBy(xpath = "//ul[@id='social-sidebar-menu']//a[contains(., 'Cars') and @aria-expanded='false']")
-    private WebElement carsExpand;
+    @FindBy(xpath = "//li[@id='tocify-header8]//a[contains(text(), 'Earth')]")
+    private WebElement earthExpand;
+
+    @FindBy(xpath = "//ul[@class='tocify-subheader']//a[contains(text(), 'Imagery')]")
+    private WebElement galleryExpand;
+
+    @FindBy(xpath = "//p[@class='prettyprint'])]")
+    private WebElement urlExpand;
 
     public Dashboard() {
-//        isWebElementVisible(bookingLink);
-        avoidToUse(3);
+        avoidToUse(2);
     }
 
-    public Dashboard clickCarsExpand() {
-        clickWebElement(carsExpand);
+    public Dashboard clickListingAPIExpand() {
+        clickWebElement(listingAPIExpand);
         return this;
+    }
+
+    public Dashboard clickEarthExpand() {
+        clickWebElement(earthExpand);
+        return this;
+    }
+
+    public Dashboard clickGalleryExpand() {
+        clickWebElement(galleryExpand);
+        return this;
+    }
+
+    public String getText() {
+        return getWebElementText(galleryExpand);
     }
 }

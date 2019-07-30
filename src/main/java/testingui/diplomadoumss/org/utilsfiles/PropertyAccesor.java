@@ -29,21 +29,30 @@ public class PropertyAccesor {
         }
     }
 
-    public String getURL(){
+    public String getURL() {
         return prop.getProperty("url");
     }
 
-    public String getBrowser(){
+    public String getBrowser() {
         return prop.getProperty("browser");
     }
 
-    public int getImplicitTimeWait(){return Integer.parseInt(prop.getProperty("implicitTimeWait"));}
+    public String getFirstLink() {
+        return prop.getProperty("firstLinkToCompare");
+    }
 
-    public int getExplicitTimeWait(){return Integer.parseInt(prop.getProperty("explicitTimeWait"));}
+    public String getSecondLink() {
+        return prop.getProperty("secondLinkToCompare");
+    }
 
-    public String getUser(){return prop.getProperty("username");}
 
-    public String getPassword(){return prop.getProperty("password");}
+    public int getExplicitTimeWait() {
+        return Integer.parseInt(prop.getProperty("explicitTimeWait"));
+    }
+
+    public String getUser() {
+        return prop.getProperty("username");
+    }
 
     public static void main(String[] args) {
         System.out.println(PropertyAccesor.getInstance().getURL());
@@ -53,15 +62,12 @@ public class PropertyAccesor {
         return Integer.parseInt(prop.getProperty("implicitTimeWait"));
     }
 
-    public int getExplicitTimeWait() {
-        return Integer.parseInt(prop.getProperty("explicitTimeWait"));
-    }
 
-    public String getEmail(){
+    public String getEmail() {
         return prop.getProperty("username");
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return prop.getProperty("password");
     }
 }
