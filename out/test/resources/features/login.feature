@@ -2,11 +2,17 @@ Feature: Validactiones de la pagina de Login
 
 #  Background: Load main page
 
-  Scenario: Cargar Pagina PHP Travels
+  Scenario: Verify if CURRENCIES option is visible
     Given I load PHP travels
     And set my credencials  on 'Login' page
     And click 'General' link on 'Left Panel' page
     Then verify the "CURRENCIES" option li is displayed on 'Left Panel' page
+
+  Scenario: Verify if AIRPORTS option is visible
+    Given I load PHP travels
+    And set my credencials  on 'Login' page
+    And click 'Flights' link on 'Left Panel' page
+    Then verify that "AIRPORTS" option li is displayed on 'Left Panel' page
 
 #  Scenario: Cargar Pagina PHP Travels
 #    Given I load PHP travels
