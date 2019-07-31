@@ -11,7 +11,7 @@ public class FirstExample {
 
         WebDriver webDriver = DriverManager.getInstance().getWebDriver();
         webDriver.get(PropertyAccesor.getInstance().getURL());
-        //webDriver.quit();
+        webDriver.quit();
     }
 
     public static void exampleMap(){

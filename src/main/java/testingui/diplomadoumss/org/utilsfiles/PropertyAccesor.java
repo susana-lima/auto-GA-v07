@@ -49,11 +49,11 @@ public class PropertyAccesor {
         return Integer.parseInt(prop.getProperty("explicitTimeWait"));
     }
 
-    public String getEmail() {
+    public String getEmail(){
         return prop.getProperty("username");
     }
 
-    public String getPassword() {
+    public String getPassword(){
         return prop.getProperty("password");
     }
 }

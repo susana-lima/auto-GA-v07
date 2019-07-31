@@ -1,6 +1,7 @@
-plugins {
-    id 'java'
-}
+import net.masterthought.cucumber.Configuration
+import net.masterthought.cucumber.ReportBuilder
+
+apply plugin: 'java'
 
 group 'testingui.diplomadoumss.org'
 version '1.0.1'
@@ -11,14 +12,82 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+buildscript{
+    repositories{
+        jcenter()
+        maven{ url "http://repo.bodar.com"}
+    }
 
-    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
-    compile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+    dependencies{
+        classpath 'net.masterthought:cucumber-reporting:3.17.1'
+    }
 }
 
-task tarea1(){
-    println 'hola mundo groovy'
+
+dependencies {
+    // testng
+    testCompile group: 'org.testng', name: 'testng', version: '6.14.3'
+
+    // selenium-java
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.12.0'
+
+    // cucumber-java
+    compile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+
+    // cucumber-testng
+    testCompile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
+    testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: '1.2.5'
+}
+
+task runFeatures(type: Test) {
+    // enable TestNG support (default is JUnit)
+    useTestNG()
+
+    options {
+        jvmArgs = ['-Dcucumber.options= ' +
+                           '--glue testingui.diplomadoumss.org ' +
+                           '--plugin pretty ' +
+                           '--plugin json:build/cucumber/cucumber.json ' +
+                           '--plugin rerun:build/cucumber/rerun.txt ']
+        jvmArgs = ['-Dbrowser=' + browser]
+    }
+
+    // show standard out and standard error of the test JVM(s) on the console
+    testLogging.showStandardStreams = true
+
+    // set JVM arguments for the test JVM(s)
+    scanForTestClasses = false
+
+    // Do not use the Gradle's HTML report:
+    reports.html.enabled = false
+
+    ignoreFailures = true
+
+    doLast {
+        generateReport('build/cucumber/cucumber.json', 'build/cucumber/reports')
+    }
+}
+
+def generateReport(String pathCucumber, String pathReport){
+    File reportOutputDirectory = new File(pathReport)
+    List<String> jsonFiles = new ArrayList<>()
+    jsonFiles.add(pathCucumber)
+
+    String buildNumber = "1"
+    String projectName = "UMSS Diplomado v3"
+    boolean runWithJenkins = false
+    boolean parallelTesting = false
+
+    Configuration configuration = new Configuration(reportOutputDirectory, projectName)
+// optional configuration
+    configuration.setParallelTesting(parallelTesting)
+    configuration.setRunWithJenkins(runWithJenkins)
+    configuration.setBuildNumber(buildNumber)
+// addidtional metadata presented on main page
+    configuration.addClassifications("Platform", "Windows")
+    configuration.addClassifications("Browser", "Chrome")
+    configuration.addClassifications("Branch", "release/1.0")
+
+    ReportBuilder reportBuilder = new ReportBuilder(jsonFiles, configuration)
+    reportBuilder.generateReports()
 }
