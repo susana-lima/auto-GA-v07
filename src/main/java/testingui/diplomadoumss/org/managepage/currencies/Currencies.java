@@ -9,9 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
 
-import static testingui.diplomadoumss.org.manageevents.Event.avoidToUse;
-import static testingui.diplomadoumss.org.manageevents.Event.clickWebElement;
-import static testingui.diplomadoumss.org.manageevents.Event.fillWebElement;
+import static testingui.diplomadoumss.org.manageevents.Event.*;
 
 public class Currencies extends BasePage {
     @FindBy(xpath = "//*[@class='xcrud-list-container']/table/tbody/tr")
@@ -31,6 +29,9 @@ public class Currencies extends BasePage {
 
     @FindBy(xpath = "//a[text()='Save & Return']")
     private WebElement saveCurrencyButton;
+
+    @FindBy(xpath = "//a[text()=' Print']")
+    private WebElement printOption;
 
     public Currencies(){
         avoidToUse(5);
@@ -73,5 +74,22 @@ public class Currencies extends BasePage {
         fillWebElement(symbolCurrency, "#");
         fillWebElement(codeCurrency, "ABC");
         clickWebElement(saveCurrencyButton);
+    }
+
+    public Boolean isPrintOptionVisible(){
+        return isAnElementVisible(printOption);
+    }
+
+    public WebElement getDeleteOption(){
+        WebDriver webDriver = DriverManager.getInstance().getWebDriver();
+        String removeOptionPath = "//*[@class='xcrud-list-container']/table/tbody/tr[1]/td[9]/span/a[@title='Remove']";
+
+        return webDriver.findElement(By.xpath(removeOptionPath));
+    }
+
+    public Boolean isDangerColor(){
+        WebElement deleteOption = getDeleteOption();
+        System.out.println(getCssColorValue(deleteOption));
+        return (getCssColorValue(deleteOption).compareToIgnoreCase("rgba(238, 95, 91, 1)")) == 0;
     }
 }

@@ -43,4 +43,8 @@ public class Event {
     public static String getWebElementText(WebElement element) {
         return element.getText();
     }
+
+    public static String getCssColorValue(WebElement element){
+        return element.getCssValue("background-color");
+    }
 }

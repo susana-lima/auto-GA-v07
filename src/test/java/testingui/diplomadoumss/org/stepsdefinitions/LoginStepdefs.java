@@ -111,4 +111,19 @@ public class LoginStepdefs {
         Boolean arePresentAirports = airports.arePresentMainAirports();
         Assert.assertEquals(arePresentAirports, Boolean.TRUE);
     }
+
+    @Then("^verify the PRINT option is displayed on 'top' of the list$")
+    public void verifyThePRINTOptionIsDisplayedOnTopOfTheList() throws Throwable {
+        Assert.assertEquals((currencies.isPrintOptionVisible()), Boolean.TRUE, "Is PRINT option visible");
+    }
+
+    @And("^select delete option of first row of the list$")
+    public void selectFirstRowOfTheList() throws Throwable {
+        currencies.getDeleteOption();
+    }
+
+    @Then("^verify style of delete option$")
+    public void verifyStyleOfDeleteOption() throws Throwable {
+        Assert.assertEquals(currencies.isDangerColor(), Boolean.TRUE, "Is danger color");
+    }
 }
