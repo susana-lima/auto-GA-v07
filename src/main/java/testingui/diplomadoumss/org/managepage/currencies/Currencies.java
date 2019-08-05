@@ -33,6 +33,9 @@ public class Currencies extends BasePage {
     @FindBy(xpath = "//a[text()=' Print']")
     private WebElement printOption;
 
+    @FindBy(xpath = "//a[text()='Return']")
+    private WebElement returnOption;
+
     public Currencies(){
         avoidToUse(5);
     }
@@ -91,5 +94,44 @@ public class Currencies extends BasePage {
         WebElement deleteOption = getDeleteOption();
         System.out.println(getCssColorValue(deleteOption));
         return (getCssColorValue(deleteOption).compareToIgnoreCase("rgba(238, 95, 91, 1)")) == 0;
+    }
+
+    public void clickViewOption(){
+        WebDriver webDriver = DriverManager.getInstance().getWebDriver();
+        String viewOptionPath = "//*[@class='xcrud-list-container']/table/tbody/tr[1]/td[9]/span/a[@title='View']";
+
+        WebElement viewOptionElement = webDriver.findElement(By.xpath(viewOptionPath));
+        clickWebElement(viewOptionElement);
+    }
+
+    public Boolean isReturnOptionVisible(){
+        avoidToUse(3);
+        return isAnElementVisible(returnOption);
+    }
+
+    public Boolean thereIsOnlyOneDefaultCurrency(){
+        WebDriver webDriver = DriverManager.getInstance().getWebDriver();
+        int rowCount = webDriver.findElements(By.xpath("//*[@class='xcrud-list-container']/table/tbody/tr")).size();
+        int defaultCount = 0;
+
+
+        for(int row=1; row<=rowCount; row++){
+            String defaultIconPath = "//*[@class='xcrud-list-container']/table/tbody/tr["+row+"]/td[8]/span/i[@class='fa fa-circle fa-2x']";
+            if(existElement(defaultIconPath)){
+                defaultCount++;
+            }
+        }
+
+        return defaultCount==1;
+    }
+
+    public boolean existElement(String xpath) {
+        try {
+            WebDriver webDriver = DriverManager.getInstance().getWebDriver();
+            webDriver.findElement(By.xpath(xpath));
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
     }
 }

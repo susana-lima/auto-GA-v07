@@ -126,4 +126,19 @@ public class LoginStepdefs {
     public void verifyStyleOfDeleteOption() throws Throwable {
         Assert.assertEquals(currencies.isDangerColor(), Boolean.TRUE, "Is danger color");
     }
+
+    @And("^click 'View' option$")
+    public void clickViewOption() throws Throwable {
+        currencies.clickViewOption();
+    }
+
+    @Then("^verify the RETURN button is displayed$")
+    public void verifyTheRETURNButtonIsDisplayed() throws Throwable {
+        Assert.assertEquals(currencies.isReturnOptionVisible(), Boolean.TRUE, "Return option visible");
+    }
+
+    @Then("^verify there is one default currency$")
+    public void verifyThereIsOneDefaultCurrency() throws Throwable {
+        Assert.assertEquals(currencies.thereIsOnlyOneDefaultCurrency(), Boolean.TRUE, "Only one default currency");
+    }
 }

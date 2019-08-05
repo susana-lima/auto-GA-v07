@@ -29,3 +29,18 @@ Feature: Validations of currencies list
     And click 'Currencies' link belows 'General' options
     And select delete option of first row of the list
     Then verify style of delete option
+
+  Scenario: Verify option RETURN is present in view mode
+    Given I load PHP travels
+    And set my credencials  on 'Login' page
+    And click 'General' link on 'Left Panel' page
+    And click 'Currencies' link belows 'General' options
+    And click 'View' option
+    Then verify the RETURN button is displayed
+
+  Scenario: Verify there is only one default currency
+    Given I load PHP travels
+    And set my credencials  on 'Login' page
+    And click 'General' link on 'Left Panel' page
+    And click 'Currencies' link belows 'General' options
+    Then verify there is one default currency
