@@ -17,17 +17,23 @@ public class Currencies extends BasePage {
     @FindBy(xpath = "//*[@class='xcrud-list-container']/table/tbody/tr")
     private WebElement rowTable;
 
-    @FindBy(xpath = "//")
+    @FindBy(xpath = "//div[@class='xcrud-top-actions']/a")
     private WebElement addCurrencyButton;
 
-    @FindBy(xpath = "//")
+    @FindBy(xpath = "//label[contains(.,'Name*')]/following::input[1]")
     private WebElement nameCurrency;
 
-    @FindBy(xpath = "//")
+    @FindBy(xpath = "//label[contains(.,'Symbol')]/following::input[1]")
+    private WebElement symbolCurrency;
+
+    @FindBy(xpath = "//label[contains(.,'Code*')]/following::input[1]")
+    private WebElement codeCurrency;
+
+    @FindBy(xpath = "//a[text()='Save & Return']")
     private WebElement saveCurrencyButton;
 
     public Currencies(){
-        avoidToUse(3);
+        avoidToUse(5);
     }
 
     public ArrayList<String> getValuesNameColumnData(){
@@ -62,9 +68,10 @@ public class Currencies extends BasePage {
     }
 
     public void fillDataNewCurrency(){
+        avoidToUse(3);
         fillWebElement(nameCurrency, "ABC");
-        fillWebElement(nameCurrency, "ABC");
-        fillWebElement(nameCurrency, "ABC");
+        fillWebElement(symbolCurrency, "#");
+        fillWebElement(codeCurrency, "ABC");
         clickWebElement(saveCurrencyButton);
     }
 }
