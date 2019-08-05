@@ -12,6 +12,9 @@ import testingui.diplomadoumss.org.managepage.dashboard.Dashboard;
 import testingui.diplomadoumss.org.managepage.header.Header;
 import testingui.diplomadoumss.org.managepage.login.Login;
 
+import static org.testng.Assert.assertEquals;
+import static testingui.diplomadoumss.org.manageevents.Event.clickWebElement;
+
 /**
  * @author Marcelo Garay
  * @project testingui.diplomadoumss.org
@@ -32,9 +35,9 @@ public class LoginStepdefs {
         dashboard = login.setCredentials();
     }
 
-    @And("^click 'Cars' link on 'Left Panel' page$")
+    @And("^click 'CMS' link on 'Left Panel' page$")
     public void clickCarsLinkOnLeftPanelPage() throws Throwable {
-        dashboard.clickCarsExpand();
+        dashboard.clickCMSExpand();
     }
 
     @And("^fill \"([^\"]*)\" email field on 'Login' page$")
@@ -62,5 +65,76 @@ public class LoginStepdefs {
     @And("^fill email field using json file on 'Login' page$")
     public void fillEmailFieldUsingJsonFileOnLoginPage() throws Throwable {
 
+    }
+
+    @And("^click 'Page' link on 'Left Panel' page$")
+    public void clickPageLinkOnLeftPanelPage() {
+        dashboard.clickPageExpand();
+    }
+
+
+    @And("^click 'FLIGHT BOOKINGS' link on 'Left Panel' page$")
+    public void clickFLIGHTBOOKINGSLinkOnLeftPanelPage() {
+        dashboard.clickFlightbBookingsExpand();
+    }
+
+    @And("^click 'BOOKINGS' link on 'Left Panel' page$")
+    public void clickBOOKINGSLinkOnLeftPanelPage() {
+        dashboard.clickBookings();
+    }
+
+
+
+
+
+    @Then("^Verify that the hover-help of the edit button says Edit$")
+    public void verifyThatTheHoverHelpOfTheEditButtonSaysEdit() {
+       login.compareText();
+    }
+
+    @Then("^Verify that the hover-help of the edit button says DELETE$")
+    public void verifyThatTheHoverHelpOfTheEditButtonSaysDELETE() {
+
+        login.compareTextDelete();
+
+    }
+
+    @Then("^Verify that the title of CMS-> Page appears the title CMS MANAGEMENT$")
+    public void verifyThatTheTitleOfCMSPageAppearsTheTitleCMSMANAGEMENT() {
+        login.compareStaticTexte();
+    }
+
+    @Then("^Verify that the column title is Adults in the FLIGHT BOOKINGS table$")
+    public void verifyThatTheColumnTitleIsAdultsInTheFLIGHTBOOKINGSTable() {
+
+        login.compareColumnLabelAdults();
+    }
+
+    @Then("^Verify that the column title is Booking Id in the FLIGHT BOOKINGS table$")
+    public void verifyThatTheColumnTitleIsBookingIdInTheFLIGHTBOOKINGSTable() {
+        login.compareColumnLabelBookingId();
+    }
+
+    @Then("^Verify that the column title is Origin in the FLIGHT BOOKINGS table$")
+    public void verifyThatTheColumnTitleIsOriginInTheFLIGHTBOOKINGSTable() {
+
+        login.compareColumnLabelOrigin();
+    }
+
+    @And("^Click on the link in the column Arrival Date in the FLIGHT RESERVATIONS table header$")
+    public void clickEnUnFieldDeUnItemDeLaColumnaArrivalDate() {
+
+        dashboard.clickOnTableHeaderArrivalDate();
+    }
+
+
+   /* @Then("^Verify that when we click on the Arrival Date column the items are sorted$")
+    public void verifyThatWhenWeClickOnTheArrivalDateColumnTheItemsAreSorted() {
+
+    }*/
+
+    @And("^click on the link in the column Children in the FLIGHT RESERVATIONS table header$")
+    public void clickOnTheLinkInTheColumnChildrenInTheFLIGHTRESERVATIONSTableHeader() {
+        dashboard.clickOnTableHeaderChildren();
     }
 }

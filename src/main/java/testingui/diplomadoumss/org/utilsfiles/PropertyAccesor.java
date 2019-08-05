@@ -56,4 +56,26 @@ public class PropertyAccesor {
     public String getPassword(){
         return prop.getProperty("password");
     }
+    public String getEditToCompare() {
+        return prop.getProperty("edit");
+    }
+    public String getDELETEToCompare() {
+        return prop.getProperty("DELETE");
+    }
+
+    public String getStaticTextToPage() {
+        return prop.getProperty("CMS_MANAGEMENT");
+    }
+    public String getColumnLabelAdults() {
+        return prop.getProperty("Adults");
+    }
+
+
+    public String getColumnLabelBookingId() {
+        return prop.getProperty("BookingId");
+    }
+
+    public String getColumnLabelOrigin() {
+        return prop.getProperty("Origin");
+    }
 }

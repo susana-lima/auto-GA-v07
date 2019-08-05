@@ -39,4 +39,10 @@ public class Event {
     public static String getWebElementText(WebElement element) {
         return element.getText();
     }
+
+    public static String getTitleWebElementText(WebElement element) {
+        return element.getAttribute("Title");
+    }
+
+
 }

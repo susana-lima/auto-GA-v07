@@ -80,21 +80,7 @@ Feature: Validactiones de la pagina de Login
     And set my credencials  on 'Login' page
     And click 'FLIGHT BOOKINGS' link on 'Left Panel' page
     And click 'BOOKINGS' link on 'Left Panel' page
-    And Click on the link in the column Arrival Date in the FLIGHT RESERVATIONS table header
+    And click en un field de un item de la columna Arrival Date
     And click 'Logout' button on 'Header' page
    # Then Verify that when we click on the Arrival Date column the items are sorted
-
-
-
-
-
-  Scenario: Test Case 09:CMS-AUTO-10 - Verify that when we click on the “Arrival Date” column the items are sorted.
-    Given I load PHP travels
-    And set my credencials  on 'Login' page
-    And click 'FLIGHT BOOKINGS' link on 'Left Panel' page
-    And click 'BOOKINGS' link on 'Left Panel' page
-    And click on the link in the column Children in the FLIGHT RESERVATIONS table header
-    And click 'Logout' button on 'Header' page
-   # Verify that when we click on the “Children” column the elements are sorted.
-
 
