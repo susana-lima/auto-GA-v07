@@ -36,6 +36,15 @@ public class Currencies extends BasePage {
     @FindBy(xpath = "//a[text()='Return']")
     private WebElement returnOption;
 
+    @FindBy(xpath = "//label[contains(.,'Rate*')]/following::input[1]")
+    private WebElement rateCurrency;
+
+    @FindBy(xpath = "//label[contains(.,'Active*')]/following::select[1]/option[@value='Yes']")
+    private WebElement activeCurrency;
+
+    @FindBy(xpath = "//a[text()=' Export into CSV']")
+    private WebElement exportOption;
+
     public Currencies(){
         avoidToUse(5);
     }
@@ -133,5 +142,14 @@ public class Currencies extends BasePage {
         } catch (org.openqa.selenium.NoSuchElementException e) {
             return false;
         }
+    }
+
+    public Boolean existDefaultEntries(){
+        avoidToUse(3);
+        return (getWebElementText(activeCurrency).equalsIgnoreCase("Yes"));
+    }
+
+    public Boolean isExportOptionVisible(){
+        return isAnElementVisible(exportOption);
     }
 }

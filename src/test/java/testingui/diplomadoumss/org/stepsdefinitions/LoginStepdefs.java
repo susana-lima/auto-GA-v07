@@ -141,4 +141,14 @@ public class LoginStepdefs {
     public void verifyThereIsOneDefaultCurrency() throws Throwable {
         Assert.assertEquals(currencies.thereIsOnlyOneDefaultCurrency(), Boolean.TRUE, "Only one default currency");
     }
+
+    @Then("^verify Active and Rate has default values$")
+    public void verifyActiveAndRateHasDefaultValues() throws Throwable {
+        Assert.assertEquals(currencies.existDefaultEntries(), Boolean.TRUE, "Exist default entries");
+    }
+
+    @Then("^verify the EXPORT INTO CSV option is displayed on 'top' of the list$")
+    public void verifyTheEXPORTINTOCSVOptionIsDisplayedOnTopOfTheList() throws Throwable {
+        Assert.assertEquals((currencies.isExportOptionVisible()), Boolean.TRUE, "Is Export option visible");
+    }
 }
