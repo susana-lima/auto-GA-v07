@@ -152,4 +152,17 @@ public class Currencies extends BasePage {
     public Boolean isExportOptionVisible(){
         return isAnElementVisible(exportOption);
     }
+
+    public void clickDeleteOption(){
+        avoidToUse(3);
+        WebDriver webDriver = DriverManager.getInstance().getWebDriver();
+        String deleteOptionPath = "//*[@class='xcrud-list-container']/table/tbody/tr[1]/td[9]/span/a[@title='Remove']";
+
+        WebElement deleteOptionElement = webDriver.findElement(By.xpath(deleteOptionPath));
+        clickWebElement(deleteOptionElement);
+    }
+
+    public boolean isConfirmationDialogPresent(){
+        return isDialogPresent();
+    }
 }

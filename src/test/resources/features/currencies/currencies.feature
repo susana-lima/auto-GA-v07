@@ -59,3 +59,11 @@ Feature: Validations of currencies list
     And click 'General' link on 'Left Panel' page
     And click 'Currencies' link belows 'General' options
     Then verify the EXPORT INTO CSV option is displayed on 'top' of the list
+
+  Scenario: Verify dialog confirmation is present on deleting action
+    Given I load PHP travels
+    And set my credencials  on 'Login' page
+    And click 'General' link on 'Left Panel' page
+    And click 'Currencies' link belows 'General' options
+    And click 'Delete' option
+    Then verify confirmation dialog is present

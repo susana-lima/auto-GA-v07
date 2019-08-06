@@ -1,5 +1,6 @@
 package testingui.diplomadoumss.org.manageevents;
 
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import testingui.diplomadoumss.org.core.DriverManager;
@@ -46,5 +47,18 @@ public class Event {
 
     public static String getCssColorValue(WebElement element){
         return element.getCssValue("background-color");
+    }
+
+    public static boolean isDialogPresent()
+    {
+        try
+        {
+            DriverManager.getInstance().getWebDriver().switchTo().alert();
+            return true;
+        }
+        catch (NoAlertPresentException ex)
+        {
+            return false;
+        }
     }
 }

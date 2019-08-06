@@ -151,4 +151,14 @@ public class LoginStepdefs {
     public void verifyTheEXPORTINTOCSVOptionIsDisplayedOnTopOfTheList() throws Throwable {
         Assert.assertEquals((currencies.isExportOptionVisible()), Boolean.TRUE, "Is Export option visible");
     }
+
+    @And("^click 'Delete' option$")
+    public void clickDeleteOption() throws Throwable {
+        currencies.clickDeleteOption();
+    }
+
+    @Then("^verify confirmation dialog is present$")
+    public void verifyConfirmationDialogIsPresent() throws Throwable {
+        Assert.assertEquals((currencies.isConfirmationDialogPresent()), true, "Dialog is present");
+    }
 }
