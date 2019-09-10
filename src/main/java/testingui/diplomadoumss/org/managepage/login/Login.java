@@ -3,8 +3,6 @@ package testingui.diplomadoumss.org.managepage.login;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import testingui.diplomadoumss.org.managepage.BasePage;
-import testingui.diplomadoumss.org.managepage.dashboard.Dashboard;
-import testingui.diplomadoumss.org.utilsfiles.PropertyAccesor;
 
 import static testingui.diplomadoumss.org.manageevents.Event.*;
 
@@ -20,6 +18,16 @@ public class Login extends BasePage {
     @FindBy(xpath = "//input[@name='title' and @id='title']")
     private WebElement titleBook;
 
+    @FindBy(xpath = "//*[@id=\"title\"]")
+    private WebElement bookTitleField;
+
+    @FindBy(xpath = "/html/body/div/div/div[1]/div[1]")
+    private WebElement saveMessage;
+
+    @FindBy(xpath = "/html/body/nav/div/a")
+    private WebElement headerTitle;
+
+
     public Login() {
 //        isWebElementVisible(loginButton);
         avoidToUse(2);
@@ -31,5 +39,23 @@ public class Login extends BasePage {
 
     public Boolean isVisibleSaveButton(){
         return isAnElementVisible(saveButton);
+    }
+    public void clickSaveButton() {
+        clickWebElement(saveButton);
+
+    }
+    public Login setBookTitle(String booktitle) {
+        fillWebElement(bookTitleField, booktitle);
+        clickSaveButton();
+        return this;
+    }
+    public String getMessageSaved() {
+        avoidToUse(2);
+        return getWebElementText(saveMessage);
+    }
+
+    public String getHeaderTitle() {
+        avoidToUse(2);
+        return getWebElementText(headerTitle);
     }
 }
