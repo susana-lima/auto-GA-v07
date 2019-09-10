@@ -14,53 +14,22 @@ import static testingui.diplomadoumss.org.manageevents.Event.*;
  */
 public class Login extends BasePage {
 
-    @FindBy(xpath = "//input[@name='email' and @type='text']")
-    private WebElement emailTextField;
+    @FindBy(xpath = "//button[@class='btn btn-primary']")
+    private WebElement saveButton;
 
-    @FindBy(xpath = "//input[@name='password' and @type='password']")
-    private WebElement passwordTextField;
-
-    @FindBy(xpath="//button[@type='submit']")
-    private WebElement loginButton;
-
-    @FindBy(xpath = "//a[text()='Currencies']")
-    private WebElement currenciesLiOption;
+    @FindBy(xpath = "//input[@name='title' and @id='title']")
+    private WebElement titleBook;
 
     public Login() {
 //        isWebElementVisible(loginButton);
         avoidToUse(2);
     }
 
-    public Login setEmail(String email){
-        fillWebElement(emailTextField, email);
-        return this;
+    public Boolean isVisibleBookTitle(){
+        return isAnElementVisible(titleBook);
     }
 
-    public Login setPassword(String password){
-        fillWebElement(passwordTextField, password);
-        return this;
-    }
-
-    public Dashboard clickLoginButton() {
-        clickWebElement(loginButton);
-        return new Dashboard();
-    }
-
-    public Dashboard setCredentials() {
-        return setEmail(PropertyAccesor.getInstance().getEmail()).
-                setPassword(PropertyAccesor.getInstance().getPassword()).
-                clickLoginButton();
-    }
-
-    public String getLoginLabelButton() {
-        return getWebElementText(loginButton);
-    }
-
-    public String getCurrenciesLiOption(){
-        return getWebElementText(currenciesLiOption);
-    }
-
-    public Boolean isCurrenciesOptionVisible(){
-        return isAnElementVisible(currenciesLiOption);
+    public Boolean isVisibleSaveButton(){
+        return isAnElementVisible(saveButton);
     }
 }
